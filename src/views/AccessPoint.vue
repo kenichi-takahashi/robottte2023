@@ -10,7 +10,7 @@
       height="450"
       frameborder="0"
       style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYVQbNeQq8Q7w2XIsyK0nW3tesOtV93_A&q=東京都練馬区北町２-21-10"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYVQbNeQq8Q7w2XIsyK0nW3tesOtV93_A"
       allowfullscreen
     ></iframe>
  
