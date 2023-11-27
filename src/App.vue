@@ -8,11 +8,12 @@
       @mouseleave="resetLogo"
     >
     <HelloWorld msg="株式会社robottteへようこそ"/>
-    <p>すばらしい！</p>
-    <router-link to="/accesspoint">Access</router-link>
-    <router-link to="/productintroduction">Product</router-link>
-    <router-link to="/companyoverview">Overview</router-link>
     <router-view></router-view>
+    <router-link to="/accesspoint">Access</router-link>
+    <br>
+    <router-link to="/productintroduction">Product</router-link>
+    <br>
+    <router-link to="/companyoverview">Overview</router-link>
 </div>
 </template>
 
