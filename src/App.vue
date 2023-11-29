@@ -1,20 +1,23 @@
 <template>
-  <div id="app">
+  <div id="app" class="fade-in">
     <img
       src="@/assets/logo.png"
       alt="Logo"
-      class="logo"
+      class="logo app-logo"
       @mouseover="enlargeLogo"
       @mouseleave="resetLogo"
+      @click="goToTop"
     >
     <HelloWorld msg="株式会社robottteへようこそ"/>
-    <router-view></router-view>
+    <transition name="page" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <router-link to="/accesspoint">Access</router-link>
     <br>
     <router-link to="/productintroduction">Product</router-link>
     <br>
     <router-link to="/companyoverview">Overview</router-link>
-</div>
+  </div>
 </template>
 
 <script>
@@ -31,42 +34,93 @@ export default {
   },
   methods: {
     enlargeLogo() {
-      // マウスオーバー時にロゴを拡大するロジックをここに追加
       this.$refs.logo.style.transform = 'scale(1.2)';
     },
     resetLogo() {
-      // マウスがロゴから離れたときにロゴのサイズを元に戻すロジックをここに追加
       this.$refs.logo.style.transform = 'scale(1)';
-      
+    },
+    goToTop() {
+      const currentPath = this.$route.path;
+      if (currentPath !== '/') {
+        this.$router.push('/');
+      }
     },
   },
-};
+  data() {
+    return {
+      currentSection: 0,
+    };
+  },
+}
 </script>
 
-<style>
+<style scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'BIZ UDPゴシック', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
-/* 基本のスタイル */
+
 .logo {
-    width: 60vw; /* ビューポートの横幅の60% */
-    height: auto; /* 縦横比を保つ */
-    margin-bottom: 10px; /* スペースを追加または調整 */
+  width: 60vw;
+  height: auto;
+  margin-bottom: 10px;
 }
-/* マウスオーバー時に拡大されるスタイル */
+
 .logo:hover {
   transform: scale(1.2);
-  transition: transform 0.3s ease; /* 拡大アニメーションの速度とイージングを調整できます */
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
-/* スマートフォン用のスタイル（画面幅が600px以下の場合） */
+
+.app-logo {
+  cursor: pointer;
+}
+
+.pointer-link:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
-    .logo {
-        width: 90vw; /* ビューポートの横幅の90% */
-    }
+  .logo {
+    width: 70vw;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ページ遷移時のトランジションのスタイル */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
+/* リンクのスタイル */
+router-link {
+  font-size: 20px;
+  text-decoration: none;
+  color: #2c3e50;
+  margin: 5px;
+  transition: color 0.3s;
+}
+router-link:hover {
+  color: #3498db;
 }
 </style>
