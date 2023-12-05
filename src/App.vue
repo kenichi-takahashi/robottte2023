@@ -4,6 +4,7 @@
       src="@/assets/logo.png"
       alt="Logo"
       class="logo app-logo"
+      ref="logo"
       @mouseover="enlargeLogo"
       @mouseleave="resetLogo"
       @click="goToTop"
@@ -12,11 +13,13 @@
     <transition name="page" mode="out-in">
       <router-view></router-view>
     </transition>
-    <router-link to="/accesspoint">Access</router-link>
+    <router-link to="/companyoverview">Overview</router-link>
     <br>
     <router-link to="/productintroduction">Product</router-link>
     <br>
-    <router-link to="/companyoverview">Overview</router-link>
+    <router-link to="/accesspoint">Access</router-link>
+    <br>
+    <router-link to="/companyquery">Query</router-link>
   </div>
 </template>
 
