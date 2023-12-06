@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 // const punycode = require('punycode-lite');
 
 const app = express();
-const port = 3001; 
+const port = 8080; 
 
 // server.js
 require('dotenv').config(); // 最初に読み込み

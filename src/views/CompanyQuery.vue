@@ -69,7 +69,7 @@ export default {
         address: this.address
       };
       // HTTPクライアント（axiosなど）を使用してPOSTリクエストを送信
-      axios.post('http://localhost:3001/sendEmail', formData)
+      axios.post('http://localhost:8080/sendEmail', formData)
       // 一旦消す。axios.post('/sendEmail', formData)
         .then(response => {
           console.log(response.data);

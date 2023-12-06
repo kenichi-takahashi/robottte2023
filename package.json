@@ -8,6 +8,8 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -18,7 +20,6 @@
     "core-js": "^3.8.3",
     "express": "^4.18.2",
     "jquery": "^3.7.1",
-    "jquery-scrollify": "github:lukehaas/Scrollify",
     "nodemailer": "^6.9.7",
     "vue": "^2.6.14",
     "vue-router": "^3.6.5",
