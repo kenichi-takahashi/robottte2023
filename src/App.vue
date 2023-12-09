@@ -68,15 +68,23 @@ export default {
 }
 
 .logo {
-  width: 60vw;
+  width: 50vw;
   height: auto;
   margin-bottom: 10px;
 }
 
 .logo:hover {
   transform: scale(1.2);
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   cursor: pointer;
+}
+
+.logo {
+  transition: transform 0.5s ease;
+}
+
+.logo:not(:hover) {
+  transform: none; 
 }
 
 .app-logo {

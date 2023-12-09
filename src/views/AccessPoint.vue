@@ -10,7 +10,7 @@
       height="450"
       frameborder="0"
       style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhxZaNA03BvbeW8Pq33hdEr29z1XvhIuI&q=東京都練馬区北町２-21-10"
+      src="https://www.google.com/maps/embed/v1/place?key=' + apiKey + '&q=東京都練馬区北町２-21-10"
       allowfullscreen
     ></iframe>
  
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       pageTitle: 'AccessPoint',
+      apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
     };
   },
 };
