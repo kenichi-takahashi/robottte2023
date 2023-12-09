@@ -8,13 +8,15 @@ module.exports = defineConfig((context) => {
   if (isProduction) {
     return {
       transpileDependencies: true,
-      publicPath: '/robottte/' // プロジェクト名に置き換えてください
+      outputDir: 'dist', 
+      productionSourceMap: false,
+      publicPath: '/robottte/' // プロジェクト名に置き換えてください追加 publicPath: './', 
     };
   } else { // ローカル環境用の設定
     return {
       transpileDependencies: true,
       devServer: {
-        port: 3000 // ローカル環境のポート番号を指定
+        port: 3000 // ローカル環境のポート番号を指定 　disableHostCheck: true（←削除）
       }
     };
   }

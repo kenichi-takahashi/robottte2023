@@ -1,10 +1,13 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const serveStatic = require('serve-static');
+const path = require('path');
+const cors = require('cors');
 // const punycode = require('punycode-lite');
 
 const app = express();
-const port = 8080; 
+const port = process.env.PORT || 8080; //元const port = 8080; 
 
 // server.js
 require('dotenv').config(); // 最初に読み込み
@@ -12,17 +15,21 @@ require('dotenv').config(); // 最初に読み込み
 const user = process.env.MAIL_USER;
 const pass = process.env.MAIL_PASS;
 
-  // Node.jsの例 
-  app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); 
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-  
-
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
+
+// Node.jsの例 
+//  app.use((req, res, next) => {
+//    res.header("Access-Control-Allow-Origin", "*"); 
+//    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//    next();
+//  });
+
+//app.get('/', (req, res) => {
+//  res.send('Hello, World!');
+// });
+app.use(cors());
 
 app.use(express.static('public'));
 
@@ -69,7 +76,22 @@ app.post('/sendEmail', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`サーバーがポート${port}で起動しました`);
-});
+  // ここで静的ファイルを提供
+  app.use(express.static(path.join(__dirname, '../dist')));
+  // app.use(express.static(path.join(__dirname, 'dist')));
+  // app.use('/', serveStatic(path.join(__dirname, '../dist')));
 
+  // すべてのルートでindex.htmlを提供
+  // index.htmlを提供
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../dist/index.html'))
+  });
+
+  //app.get('/*', (req,res) => {
+  //  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+  //});
+
+  app.listen(port, () => {
+    console.log(`サーバーがポート${port}で起動しました`);
+  });
+  

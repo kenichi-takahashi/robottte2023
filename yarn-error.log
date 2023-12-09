@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  SyntaxError: /root/projects/robottte/package.json: Expected double-quoted property name in JSON at position 482 (line 21 column 1)
+  SyntaxError: /root/projects/robottte/package.json: Expected double-quoted property name in JSON at position 265 (line 12 column 1)
       at JSON.parse (<anonymous>)
       at /usr/lib/node_modules/yarn/lib/cli.js:1629:59
       at Generator.next (<anonymous>)
@@ -32,6 +32,9 @@ npm manifest:
     },
     "scripts": {
       "serve": "vue-cli-service serve",
+      "start": "vue-cli-service build",
+  //    "start": "node server/server.js",
+      "dev": "node server/server.js",
       "build": "vue-cli-service build",
       "lint": "vue-cli-service lint"
     },
@@ -42,7 +45,6 @@ npm manifest:
       "core-js": "^3.8.3",
       "express": "^4.18.2",
       "jquery": "^3.7.1",
-  //    "jquery-scrollify": "github:lukehaas/Scrollify",
       "nodemailer": "^6.9.7",
       "vue": "^2.6.14",
       "vue-router": "^3.6.5",
@@ -2370,8 +2372,6 @@ Lockfile:
       is-glob "~4.0.1"
       normalize-path "~3.0.0"
       readdirp "~3.6.0"
-    optionalDependencies:
-      fsevents "~2.3.2"
   
   chrome-trace-event@^1.0.2:
     version "1.0.3"
