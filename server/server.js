@@ -29,7 +29,11 @@ app.get('/health', (req, res) => {
 //app.get('/', (req, res) => {
 //  res.send('Hello, World!');
 // });
-app.use(cors());
+const corsOptions = {
+  origin: 'https://kenichi-takahashi.github.io',
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 app.use(express.static('public'));
 
