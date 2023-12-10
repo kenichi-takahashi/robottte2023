@@ -10,7 +10,7 @@
       height="450"
       frameborder="0"
       style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=' + apiKey + '&q=東京都練馬区北町２-21-10"
+      :src="mapUrl"
       allowfullscreen
     ></iframe>
  
@@ -27,6 +27,11 @@ export default {
       apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
     };
   },
+  computed: {
+    mapUrl() {
+      return `https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=東京都練馬区北町２-21-10`;
+    }
+  }
 };
 
 </script>
