@@ -20,6 +20,23 @@
     <router-link to="/accesspoint">Access</router-link>
     <br>
     <router-link to="/companyquery">Query</router-link>
+        <header id="header">
+      <h1>Header</h1>
+    </header>
+    <main>
+      <section id="box1" class="box" data-section-name="Area1">
+        <h2>Area1</h2>
+      </section>
+      <section id="box2" class="box" data-section-name="Area2">
+        <h2>Area2</h2>
+      </section>
+      <section id="box3" class="box" data-section-name="Area3">
+        <h2>Area3</h2>
+      </section>
+    </main>
+    <footer id="footer">
+      <small>&copy; Copyright </small> 
+    </footer>
   </div>
 </template>
 
@@ -27,6 +44,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import '../js/6-1.js';  // 6-1.jsへのパスを指定
 
 Vue.use(VueRouter);
 
@@ -48,7 +66,8 @@ export default {
         this.$router.push('/');
       }
     },
-  },
+ 
+ },
   data() {
     return {
       currentSection: 0,
@@ -58,6 +77,9 @@ export default {
 </script>
 
 <style scoped>
+@import '@/assets/css/6-1.css';
+@import '@/assets/css/pagination.css'; 
+
 #app {
   font-family: 'BIZ UDPゴシック', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
