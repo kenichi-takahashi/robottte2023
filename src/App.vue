@@ -1,43 +1,45 @@
 <template>
-  <div id="app" class="fade-in">
-    <img
-      src="@/assets/logo.png"
-      alt="Logo"
-      class="logo app-logo"
-      ref="logo"
-      @mouseover="enlargeLogo"
-      @mouseleave="resetLogo"
-      @click="goToTop"
-    >
-    <HelloWorld msg="株式会社robottteへようこそ"/>
-    <transition name="page" mode="out-in">
-      <router-view></router-view>
-    </transition>
-    <router-link to="/companyoverview">Overview</router-link>
-    <br>
-    <router-link to="/productintroduction">Product</router-link>
-    <br>
-    <router-link to="/accesspoint">Access</router-link>
-    <br>
-    <router-link to="/companyquery">Query</router-link>
-        <header id="header">
-      <h1>Header</h1>
+  <div>
+    <header id="header">
+        <div id="app" class="fade-in">
+            <img
+              src="@/assets/logo.png"
+              alt="Logo"
+              class="logo app-logo"
+              ref="logo"
+              @mouseover="enlargeLogo"
+              @mouseleave="resetLogo"
+              @click="goToTop"
+            >  
+        </div>  
     </header>
-    <main>
-      <section id="box1" class="box" data-section-name="Area1">
-        <h2>Area1</h2>
-      </section>
-      <section id="box2" class="box" data-section-name="Area2">
-        <h2>Area2</h2>
+    <section id="box2" class="box" data-section-name="Area2">
+      <!--data-section-nameはページネーションを表示させた際、現在地に現れるテキスト-->
+      <!-- <transition name="page" mode="out-in">
+      </transition> -->
+      <router-link to="/companyoverview">Overview</router-link>
+      <!--/box-->
+      <router-view name="box2"></router-view>
       </section>
       <section id="box3" class="box" data-section-name="Area3">
-        <h2>Area3</h2>
-      </section>
-    </main>
-    <footer id="footer">
-      <small>&copy; Copyright </small> 
-    </footer>
-  </div>
+      <br>
+      <router-link to="/productintroduction">Product</router-link>
+      <router-view name="box3"></router-view>
+      <!--/box--></section>      
+      <section id="box4" class="box" data-section-name="Area4">
+      <br>
+      <router-link to="/accesspoint">Access</router-link>
+      <router-view name="box4"></router-view>
+      <!--/box--></section>
+      <section id="box5" class="box" data-section-name="Area5">
+      <br>
+      <router-link to="/companyquery">Query</router-link>
+      <router-view name="box5"></router-view>
+      <!--/box--></section>     
+
+  <HelloWorld msg="株式会社robottteへようこそ"/>
+  <router-view></router-view>
+ </div>
 </template>
 
 <script>
@@ -45,6 +47,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import '../js/6-1.js';  // 6-1.jsへのパスを指定
+import scrollify from 'jquery-scrollify';
 
 Vue.use(VueRouter);
 
@@ -52,6 +55,11 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  mounted() {
+    this.$nextTick(() => {
+      scrollify(/* オプション */);
+    });
   },
   methods: {
     enlargeLogo() {
@@ -66,8 +74,7 @@ export default {
         this.$router.push('/');
       }
     },
- 
- },
+  },
   data() {
     return {
       currentSection: 0,

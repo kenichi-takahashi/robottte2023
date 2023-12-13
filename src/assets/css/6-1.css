@@ -60,3 +60,9 @@
 		display: none;
 	}	
 }
+
+.box {
+    font-size: 32px; /* 希望のサイズに変更 */
+    font-family: 'BIZ UDPGothic', sans-serif;
+	text-align: center;
+}

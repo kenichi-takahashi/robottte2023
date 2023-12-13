@@ -11,12 +11,26 @@ Vue.use(VueRouter);
 
 const routes = [
 //  { path: '/', component: App }, // メインページは App.vue
-  { path: '/accesspoint', component: AccessPoint },
-  { path: '/productintroduction', component: ProductIntroduction },
-  { path: '/companyoverview', component: CompanyOverview },
-  { path: '/companyquery', component: CompanyQuery },
+{ path: '/companyoverview', 
+  components:{
+    box2:CompanyOverview 
+  },
+},
+{ path: '/productintroduction',
+  components:{
+    box3:ProductIntroduction
+  },
+},
+{ path: '/accesspoint', 
+  components:{
+    box4:AccessPoint },
+},
+{ path: '/companyquery',
+  component:{
+    box5:CompanyQuery
+  },
+}
 ];
-
 
 const router = new VueRouter({
   routes, // ルートの設定を渡す

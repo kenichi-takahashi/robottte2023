@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <base href=“/“ />
+    <base href="/" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -9,13 +9,37 @@
     <title>robottte</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/6-1.css">
+    <script>
+      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyDWYBtboDr3mGfxp7gERMr9Olw-hYJBgWQ",
+      });
+    </script>
   </head>
   <body>
-    <noscript>
-    </noscript>
-    <div id="app"></div>
+      <main>
+        <div id="app" class="fade-in">
+          <section id="box1" class="box" data-section-name="Area1">
+            <img
+              src="@/assets/logo.png"
+              alt="Logo"
+              class="logo app-logo"
+              ref="logo"
+              @mouseover="enlargeLogo"
+              @mouseleave="resetLogo"
+              @click="goToTop"
+            >  
+          </section>
+        </div>  
+      </main>
+      
+      <footer id="footer">
+      <small>&copy; Copyright </small> 
+      </footer>
     <!-- built files will be auto injected -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"></script>
+    <!--自作のJS-->
+    <script src="js/6-1.js"></script>
   </body>
 </html>
