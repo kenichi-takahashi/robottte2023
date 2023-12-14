@@ -1,38 +1,39 @@
 <!-- src/views/AccessPoint.vue -->
 <template>
 <div class="fade-in">
-  <div class="accesspoint">
+  <div class="AccessPoint">
     <h1 class="fade-in">{{ pageTitle }}</h1>
     <p>本社：東京都港区南青山二丁目2番15号ウィン青山942</p>
     <p>支社：東京都練馬区北町２-21-10-702（INITIA練馬北町）</p>
-        <iframe
+    <!-- <iframe
       width="600"
       height="450"
       frameborder="0"
       style="border:0"
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDWYBtboDr3mGfxp7gERMr9Olw-hYJBgWQ&q=東京都練馬区北町２-21-10"
       allowfullscreen
-    ></iframe>
+    ></iframe>-->
+    <iframe src="https://maps.google.co.jp/maps?output=embed&q=東京都練馬区北町２-21-10"></iframe>
    </div>
-   <p>googlemapここに表示</p>
-   <div id="map" style="height: 400px;"></div>
+   <!-- <p>googlemapここに表示</p>
+   <div id="map" style="height: 400px;"></div>-->
 </div>
 </template>
 
 <script>
 /* global google */ // この行を追加
 export default {
-  data() {
-    return {
-      pageTitle: 'AccessPoint',
-      apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
-    };
-  },
-  computed: {
-    mapUrl() {
-      return `https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=東京都練馬区北町２-21-10`;
-    }
-  },
+//  data() {
+//    return {
+//      pageTitle: 'AccessPoint',
+//      apiKey: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
+//    };
+//  },
+//  computed: {
+//    mapUrl() {
+//      return `https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=東京都練馬区北町２-21-10`;
+//    }
+//  },
     mounted() {
     this.$nextTick(() => {
       if (typeof google !== 'undefined' && google.maps) {

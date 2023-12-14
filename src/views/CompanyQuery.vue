@@ -21,6 +21,7 @@
       <div>
         <label for="address">住所:</label>
         <input type="text" id="address" v-model="address" @blur="showGoogleMap">
+        <iframe :src="googleMapUrl" style="width: 600px; height: 450px;" frameborder="0"></iframe>
       </div>
       <div id="googleMap" v-if="googleMapVisible"></div>
       <div>
@@ -43,6 +44,7 @@ export default {
       emailError: false,
       address: '',
       googleMapVisible: false,
+      googleMapUrl: 'https://maps.google.co.jp/maps?output=embed&q=東京都練馬区北町２-21-10',
     };
   },
     methods: {
@@ -55,11 +57,14 @@ export default {
       }
     },
     showGoogleMap() {
+      this.googleMapUrl = `https://maps.google.co.jp/maps?output=embed&q=${encodeURIComponent(this.address)}`;
+    },
+//    showGoogleMap() {
       // Google Mapを表示する処理を実装
       // ここでは実際のGoogle Maps APIを使用せず、メッセージを表示するだけとします
-      this.googleMapVisible = true;
-      alert('Google Mapを表示します: ' + this.address);
-    },
+//      this.googleMapVisible = true;
+//      alert('Google Mapを表示します: ' + this.address);
+//    },
     submitForm() {
       // フォームデータをオブジェクトとして作成
       const formData = {

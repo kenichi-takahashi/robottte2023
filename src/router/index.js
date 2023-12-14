@@ -26,7 +26,7 @@ const routes = [
     box4:AccessPoint },
 },
 { path: '/companyquery',
-  component:{
+  components:{
     box5:CompanyQuery
   },
 }
