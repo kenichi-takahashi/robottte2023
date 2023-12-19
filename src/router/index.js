@@ -1,6 +1,7 @@
 // src/router/index.js
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import HomePage from '@/views/HomePage.vue';
 import CompanyOverview from '@/views/CompanyOverview.vue'; // 各ページに対応するコンポーネントをインポート
 import AccessPoint from '@/views/AccessPoint.vue';
 import ProductIntroduction from '@/views/ProductIntroduction.vue';
@@ -11,9 +12,14 @@ Vue.use(VueRouter);
 
 const routes = [
 //  { path: '/', component: App }, // メインページは App.vue
+{ path: '/', 
+  components:{
+    box1:HomePage
+  },
+},
 { path: '/companyoverview', 
   components:{
-    box2:CompanyOverview 
+    box2:CompanyOverview
   },
 },
 { path: '/productintroduction',
@@ -23,7 +29,8 @@ const routes = [
 },
 { path: '/accesspoint', 
   components:{
-    box4:AccessPoint },
+    box4:AccessPoint
+  },
 },
 { path: '/companyquery',
   components:{

@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      pageTitle: 'CompanyOverview',
+      pageTitle: '会社概要',
     };
   },
 };

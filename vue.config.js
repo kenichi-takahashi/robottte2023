@@ -1,23 +1,30 @@
 const { defineConfig } = require('@vue/cli-service');
+const path = require('path');
 
-module.exports = defineConfig((context) => {
-  // NODE_ENV 環境変数を取得
-  const isProduction = process.env.NODE_ENV === 'production';
+module.exports = defineConfig({
+  transpileDependencies: true,
 
-  // 本番リモート環境用の設定
-  if (isProduction) {
-    return {
-      transpileDependencies: true,
-      outputDir: 'dist', 
-      productionSourceMap: false,
-      publicPath: '/robottte/' // プロジェクト名に置き換えてください追加 publicPath: './', 
-    };
-  } else { // ローカル環境用の設定
-    return {
-      transpileDependencies: true,
-      devServer: {
-        port: 3000 // ローカル環境のポート番号を指定 　disableHostCheck: true（←削除）
+  // Webpackの設定をカスタマイズ
+  configureWebpack: {
+    resolve: {
+      alias: {
+        // '@' エイリアスを 'src' ディレクトリにマッピング
+        '@': path.resolve(__dirname, 'src')
       }
-    };
+    }
+  },
+
+  // 本番環境と開発環境の設定を切り替える
+  chainWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      // 本番環境用の設定
+      config.outputDir = 'dist';
+      config.productionSourceMap = false;
+      config.publicPath = '/robottte/'; // プロジェクト名に合わせて変更
+    } else {
+      // 開発環境用の設定
+      config.devServer.port = 3000; // ローカル環境のポート番号
+      // 他の開発環境特有の設定...
+    }
   }
 });

@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 
 // フォームデータを受け取り、メールを送信するエンドポイント
 app.post('/sendEmail', (req, res) => {
-  const { name, email, phoneNumber, address } = req.body;
+  const { name, email, phoneNumber, address, inquiry } = req.body;
 
   // Nodemailerを使用してメールを送信
   const transporter = nodemailer.createTransport({
@@ -60,13 +60,20 @@ app.post('/sendEmail', (req, res) => {
 
   const mailOptions = {
     from: process.env.SEND_FROM_EMAIL, // 送信元のメールアドレス
-    to: process.env.SEND_TO_EMAIL, // 送信先のメールアドレス
-    subject: 'お問い合わせがありました',
+    to: email, // 送信先のメールアドレス
+    cc:'support@hr-monster.io', // CCに追加のアドレスを設定
+    subject: 'お問合せありがとうございます　株式会社robottte（ロボテ）',
     text: `
-      名前: ${name}
-      Email: ${email}
-      電話番号: ${phoneNumber}
-      住所: ${address}
+      株式会社robottteでございます。お問合せありがとうございます。
+      担当から連絡があるまで、恐れ入りますがしばらくお待ちください。
+      どうぞ、よろしくお願い申し上げます。
+
+      お問合せ内容：
+      問合せ：${inquiry}
+      お名前：${name}
+      電話番号：${phoneNumber}
+      Email：${email}
+      ご住所：${address}
     `,
   };
 
