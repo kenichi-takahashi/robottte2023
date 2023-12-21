@@ -1,7 +1,6 @@
 // src/router/index.js
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomePage from '@/views/HomePage.vue';
 import CompanyOverview from '@/views/CompanyOverview.vue'; // 各ページに対応するコンポーネントをインポート
 import AccessPoint from '@/views/AccessPoint.vue';
 import ProductIntroduction from '@/views/ProductIntroduction.vue';
@@ -10,37 +9,23 @@ import CompanyQuery from '@/views/CompanyQuery.vue';
 
 Vue.use(VueRouter);
 
+
 const routes = [
-//  { path: '/', component: App }, // メインページは App.vue
-{ path: '/', 
-  components:{
-    box1:HomePage
+  {
+    path: '/',
+    components: {
+      default: CompanyOverview,  // デフォルトビュー
+      box2: CompanyOverview,     // 名前付きビュー 'box2'
+      box3: ProductIntroduction, // 名前付きビュー 'box3'
+      box4: AccessPoint, // 名前付きビュー 'box3'
+      box5: CompanyQuery // 名前付きビュー 'box3'
+    }
   },
-},
-{ path: '/companyoverview', 
-  components:{
-    box2:CompanyOverview
-  },
-},
-{ path: '/productintroduction',
-  components:{
-    box3:ProductIntroduction
-  },
-},
-{ path: '/accesspoint', 
-  components:{
-    box4:AccessPoint
-  },
-},
-{ path: '/companyquery',
-  components:{
-    box5:CompanyQuery
-  },
-}
+  // 他のルート定義
 ];
 
 const router = new VueRouter({
-  routes, // ルートの設定を渡す
+  routes
 });
 
 export default router;

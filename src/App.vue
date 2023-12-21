@@ -15,8 +15,7 @@
       <router-link to="/accesspoint">Access</router-link>
       <router-link to="/companyquery">Query</router-link>
     </nav>
-  <div>
-    <header id="header">
+    <section id="box1" class="box" data-section-name="Area1">
         <div id="app" class="fade-in">
             <img
               src="@/assets/logo.png"
@@ -28,50 +27,35 @@
               @click="goToTop"
             >  
         </div>  
-    </header>
-    <!-- <section id="box1" class="box" data-section-name="Area1">
-      <router-view name="box1"></router-view>
-      </section> -->
-    <section id="box2" class="box" data-section-name="Area2">
-      <!--data-section-nameはページネーションを表示させた際、現在地に現れるテキスト-->
-      <!-- <transition name="page" mode="out-in">
-      </transition> -->
+      </section>
+      <section id="box2" class="box" data-section-name="Area2">
       <br>
-      <router-link to="/companyoverview">Overview</router-link>
-      <!--/box-->
-      <router-view name="box2"></router-view>
       <HelloWorld v-if="showHelloWorld" msg="
       私たちrobottteは<span style='color: red;'>『年齢を重ねながら、幸せに暮らせる社会の実現』</span>に向け、
       ロボの手で、人の手を支えて参ります。私たちの志、思いについて、記載しております。
       私たちと一緒に、より良い未来を創造していきませんか。"/>
+      <router-view name="box2"></router-view>
       </section>
       <section id="box3" class="box" data-section-name="Area3">
-      <br>
-      <router-link to="/productintroduction">Product</router-link>
-      <router-view name="box3"></router-view>
       <HelloWorld v-if="showHelloWorld" msg="
       開発しているプロダクトについてご紹介しております。
       私たちのアプローチは、システムが人と競争するのではなく、
       テクノロジーだからこそ役に立てる場所を見つけます。"/>
-      <!--/box--></section>      
+      <router-view name="box3"></router-view>
+      </section>      
       <section id="box4" class="box" data-section-name="Area4">
       <br>
-      <router-link to="/accesspoint">Access</router-link>
-      <router-view name="box4"></router-view>
       <HelloWorld v-if="showHelloWorld" msg="
       私達の拠点情報になります。働く場所に囚われず、
       リモートで働ける環境もございます。"/>
-      <!--/box--></section>
+      <router-view name="box4"></router-view>
+      </section>
       <section id="box5" class="box" data-section-name="Area5">
       <br>
-      <router-link to="/companyquery">Query</router-link>
-      <router-view name="box5"></router-view>
       <HelloWorld v-if="showHelloWorld" msg="
       お問合せはこちらにお願いします。"/>
+      <router-view name="box5"></router-view>
       <!--/box--></section>     
-
-  <router-view></router-view>
- </div>
 </div>
 </template>
 
